@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pembelajaran - MusGo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Pengaturan Scroll Halus */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gaya Khusus untuk LMS/Halaman Belajar */
+        .lms-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            align-items: flex-start;
+        }
+
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 { color: var(--primary-color); margin-bottom: 15px; border-bottom: 2px solid var(--bg-main); padding-bottom: 10px;}
+        .sidebar ul { list-style: none; padding-left: 0; }
+        .sidebar li { margin-bottom: 10px; }
+        .sidebar a { color: var(--text-secondary); display: block; padding: 10px; border-radius: 5px; transition: var(--transition); text-decoration: none;}
+        .sidebar a:hover, .sidebar a.active { background-color: var(--bg-main); color: var(--primary-color); font-weight: bold;}
+        
+        .content-area {
+            flex: 1;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Tipografi Materi */
+        .chapter-section { margin-bottom: 60px; padding-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 40px; }
+        .chapter-section:last-child { border-bottom: none; }
+        .content-area h1 { color: var(--primary-color); margin-bottom: 15px; font-size: 2rem;}
+        .content-area h2 { color: var(--primary-color); margin-top: 0; margin-bottom: 20px; font-size: 1.8rem; border-left: 5px solid var(--accent-color); padding-left: 15px;}
+        .content-area h3 { color: var(--secondary-color); margin-top: 25px; margin-bottom: 10px; font-size: 1.3rem;}
+        .content-area p { margin-bottom: 15px; text-align: justify; line-height: 1.8; color: var(--text-main);}
+        .content-area ul { margin-left: 20px; margin-bottom: 15px; line-height: 1.8; color: var(--text-main); }
+        .content-area li { margin-bottom: 8px; }
+        
+        /* Tombol Aksi (Kuis, Games, Video) */
+        .action-box {
+            background-color: var(--bg-main);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .action-box h4 { width: 100%; margin-bottom: 10px; color: var(--primary-color); }
+        
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+        .btn-quiz { background-color: var(--accent-color); color: #fff; }
+        .btn-quiz:hover { background-color: #d48c1c; }
+        
+        .btn-game { background-color: var(--primary-color); color: #fff; }
+        .btn-game:hover { background-color: var(--secondary-color); }
+        
+        .btn-materi { border-color: var(--secondary-color); color: var(--primary-color); background: transparent; }
+        .btn-materi:hover { background-color: var(--secondary-color); color: #fff; }
+
+        .btn-disabled { background-color: #e0e0e0; color: #9e9e9e; cursor: not-allowed; border: none; }
+
+        @media (max-width: 768px) {
+            .lms-container { flex-direction: column; }
+            .sidebar { width: 100%; position: static; margin-bottom: 20px; }
+            .content-area { padding: 20px; }
+            .btn-action { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">MusGo. <span style="color:var(--text-secondary); font-size: 1rem; font-weight: normal;">| Ruang Kelas</span></div>
+            <a href="index.html" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Kembali ke Beranda</a>
+        </div>
+    </header>
+
+    <div class="lms-container">
+        
+        <aside class="sidebar">
+            <h3>Daftar Materi</h3>
+            <ul>
+                <li><a href="#pendahuluan">Pendahuluan</a></li>
+                <li><a href="#bab1">BAB I: Pengertian & Dasar Hukum</a></li>
+                <li><a href="#bab2">BAB II: Syarat, Rukun & Pembatal</a></li>
+                <li><a href="#bab3">BAB III: Hikmah & Manfaat Puasa</a></li>
+                <li><a href="#bab4">BAB IV: Kehidupan Sosial & Pendidikan</a></li>
+                <li><a href="#bab5">BAB V: Tantangan di Era Moderen</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            
+            <section id="pendahuluan" class="chapter-section">
+            <section id="bab1" class="chapter-section">
+                <h2>BAB I: Pengertian, Dasar Hukum, Dan Jenis Puasa</h2>
+                
+                <h3>A. Pengertian Secara Bahasa Dan Istilah</h3>
+                <p>Secara bahasa, puasa berasal dari kata Arab <em>ṣaum</em> (صوم) atau <em>ṣiyām</em> (صيام) yang berarti menahan diri dari sesuatu. Makna “menahan diri” ini bersifat umum, mencakup menahan dari makan, minum, berbicara, maupun perbuatan lainnya. Dalam Al-Qur’an, penggunaan kata ini dapat ditemukan pada kisah Maryam yang bernazar untuk tidak berbicara sebagai bentuk puasa.</p>
+                <p>Secara istilah (terminologi syariat), puasa adalah menahan diri dari segala hal yang membatalkan puasa, seperti makan, minum, dan hubungan suami istri, mulai dari terbit fajar hingga terbenam matahari, dengan niat karena Allah SWT. Definisi ini menegaskan bahwa puasa bukan sekadar menahan lapar dan dahaga, tetapi juga merupakan ibadah yang memiliki dimensi spiritual dan moral, seperti menahan hawa nafsu, menjaga lisan, serta meningkatkan ketakwaan.</p>
+
+                <h3>B. Dasar Hukum Puasa dalam Al-Qur’an</h3>
+                <p>Kewajiban puasa memiliki landasan yang kuat dalam Al-Qur’an, khususnya dalam Al-Qur'an surat Al-Baqarah ayat 183, yang berbunyi:</p>
+                <p><em>“Wahai orang-orang yang beriman, diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa.”</em></p>
+                <p>Ayat ini menunjukkan bahwa puasa bukan hanya kewajiban bagi umat Islam, tetapi juga telah diwajibkan kepada umat-umat terdahulu. Tujuan utama dari ibadah puasa adalah untuk mencapai derajat ketakwaan (taqwa), yaitu kesadaran penuh akan kehadiran Allah dalam setiap aspek kehidupan. Selain itu, ayat-ayat berikutnya (QS. Al-Baqarah: 184–187) menjelaskan secara rinci tentang waktu pelaksanaan puasa, keringanan bagi yang tidak mampu, serta ketentuan-ketentuan lainnya yang mengatur ibadah ini.</p>
+
+                <h3>C. Dasar Hukum Puasa Dalam Hadist</h3>
+                <p>Selain Al-Qur’an, dasar hukum puasa juga dijelaskan dalam hadis Nabi Muhammad SAW. Dalam sebuah hadis yang diriwayatkan oleh Imam Bukhari dan Imam Muslim, Rasulullah SAW bersabda:</p>
+                <p><em>“Islam dibangun atas lima perkara: bersaksi bahwa tidak ada Tuhan selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berpuasa di bulan Ramadan, dan menunaikan haji bagi yang mampu.”</em></p>
+                <p>Hadis ini menunjukkan bahwa puasa Ramadan merupakan salah satu rukun Islam yang wajib dilaksanakan oleh setiap Muslim yang memenuhi syarat. Selain itu, terdapat banyak hadis lain yang menjelaskan keutamaan puasa, seperti puasa sebagai perisai dari api neraka dan sebagai sarana penghapus dosa.</p>
+
+                <h3>D. Jenis-Jenis Puasa Dalam Islam</h3>
+                <p>Dalam Islam, puasa terbagi menjadi beberapa jenis berdasarkan hukumnya, yaitu:</p>
+                <ul>
+                    <li><strong>Puasa Wajib:</strong> Puasa yang harus dilaksanakan oleh setiap Muslim, seperti puasa di bulan Ramadan, puasa nazar (janji), dan puasa kafarat (tebusan atas pelanggaran tertentu).</li>
+                    <li><strong>Puasa Sunnah:</strong> Puasa yang dianjurkan untuk dilakukan, seperti puasa Senin-Kamis, puasa Arafah, puasa Asyura, dan puasa enam hari di bulan Syawal.</li>
+                    <li><strong>Puasa Makruh:</strong> Puasa yang sebaiknya dihindari, seperti puasa hanya pada hari Jumat tanpa diiringi hari sebelum atau sesudahnya.</li>
+                    <li><strong>Puasa Haram:</strong> Puasa yang dilarang dalam Islam, seperti puasa pada hari raya Idul Fitri dan Idul Adha, serta hari tasyrik (11, 12, 13 Dzulhijjah).</li>
+                </ul>
+                <p>Pembagian ini menunjukkan bahwa Islam memberikan aturan yang jelas dan seimbang dalam pelaksanaan ibadah puasa, sehingga umat Islam dapat menjalankannya sesuai dengan ketentuan syariat.</p>
+
+                <h3>E. Tujuan Diisyaratkannya Puasa</h3>
+                <p>Puasa disyariatkan bukan tanpa tujuan, melainkan memiliki hikmah yang sangat besar dalam kehidupan manusia. Tujuan utama puasa adalah untuk membentuk pribadi yang bertakwa, sebagaimana disebutkan dalam Al-Qur’an. Selain itu, puasa juga bertujuan untuk:</p>
+                <ul>
+                    <li>Melatih pengendalian diri dan hawa nafsu.</li>
+                    <li>Menumbuhkan rasa empati terhadap orang yang kurang mampu.</li>
+                    <li>Meningkatkan kedisiplinan dan kesabaran.</li>
+                    <li>Membersihkan jiwa dari sifat-sifat buruk.</li>
+                    <li>Mendekatkan diri kepada Allah SWT.</li>
+                </ul>
+                <p>Dengan demikian, puasa bukan hanya ibadah ritual, tetapi juga sarana pembinaan karakter dan spiritual yang berdampak pada kehidupan individu maupun sosial.</p>
+
+                <div class="action-box">
+                    <h4>Materi Interaktif & Evaluasi BAB I</h4>
+                    <a href="https://bit.ly/QUIZ_BAB_1" target="_blank" class="btn-action btn-quiz">📝 Ikuti Kuis</a>
+                    <a href="https://gemini.google.com/share/268753a2395c" target="_blank" class="btn-action btn-game">🎮 Mainkan Game</a>
+                    <a href="https://canva.link/w78too2fwov7fw7" target="_blank" class="btn-action btn-materi">🎨 Materi Canva</a>
+                    <a href="https://youtu.be/3GcMmaOm-T4?si=7I7g8Sc8LO_GDkVm" target="_blank" class="btn-action btn-materi">🎬 Tonton Video</a>
+                </div>
+            </section>
+
+            <section id="bab2" class="chapter-section">
+                <h2>BAB II: Syarat, Rukun, Dan Hal-Hal Yang Membatalkan Puasa</h2>
+                
+                <h3>A. Syarat Wajib Puasa</h3>
+                <p>Syarat wajib puasa adalah ketentuan yang menyebabkan seseorang diwajibkan untuk melaksanakan puasa, khususnya puasa Ramadan. Dalam ajaran Islam, tidak semua orang dibebani kewajiban ini, melainkan hanya mereka yang memenuhi syarat tertentu.</p>
+                <p>Seseorang diwajibkan berpuasa apabila ia beragama Islam, telah baligh (dewasa), berakal sehat, serta mampu menjalankan puasa. Anak kecil yang belum baligh tidak diwajibkan berpuasa, namun dianjurkan untuk belajar berpuasa sebagai bentuk pendidikan. Orang yang tidak berakal, seperti orang gila, tidak terkena kewajiban karena tidak memiliki kesadaran penuh terhadap perintah agama.</p>
+                <p>Selain itu, kemampuan (istitha’ah) juga menjadi syarat penting. Orang yang sakit parah, lanjut usia, atau dalam kondisi yang tidak memungkinkan untuk berpuasa diberikan keringanan (rukhsah), seperti mengganti puasa di hari lain atau membayar fidyah sesuai ketentuan syariat. Hal ini menunjukkan bahwa Islam adalah agama yang tidak memberatkan, melainkan memberikan kemudahan sesuai kemampuan umatnya.</p>
+
+                <h3>B. Syarat Sah Puasa</h3>
+                <p>Syarat sah puasa adalah ketentuan yang harus dipenuhi agar puasa yang dilakukan dianggap sah secara syariat. Seseorang yang sudah memenuhi syarat wajib belum tentu puasanya sah jika tidak memenuhi syarat sah ini.</p>
+                <p>Syarat sah puasa meliputi: beragama Islam, mumayyiz (mampu membedakan baik dan buruk), suci dari haid dan nifas bagi perempuan, serta dilakukan pada waktu yang telah ditentukan. Perempuan yang sedang haid atau nifas tidak diperbolehkan berpuasa dan wajib menggantinya di hari lain.</p>
+                <p>Selain itu, puasa harus dilakukan pada waktu yang tepat, yaitu dari terbit fajar hingga terbenam matahari. Jika seseorang berpuasa di luar waktu tersebut, maka puasanya tidak sah. Syarat ini menegaskan bahwa ibadah puasa memiliki aturan waktu yang sangat jelas dan tidak bisa dilakukan secara sembarangan.</p>
+
+                <h3>C. Rukun Puasa</h3>
+                <p>Rukun puasa adalah unsur pokok yang harus ada dalam pelaksanaan puasa. Tanpa rukun ini, puasa tidak akan sah meskipun syarat lainnya terpenuhi.</p>
+                <p>Rukun puasa ada dua, yaitu niat dan menahan diri dari segala hal yang membatalkan puasa. Niat merupakan penegasan dalam hati untuk melaksanakan ibadah puasa karena Allah SWT. Niat puasa Ramadan dilakukan pada malam hari sebelum fajar, sebagaimana dijelaskan dalam hadis Nabi Muhammad SAW.</p>
+                <p>Rukun kedua adalah menahan diri dari hal-hal yang membatalkan puasa, seperti makan, minum, dan hubungan suami istri, sejak terbit fajar hingga terbenam matahari. Menahan diri ini tidak hanya bersifat fisik, tetapi juga mencakup pengendalian diri dari perbuatan dosa, seperti berkata kasar, berbohong, dan melakukan perbuatan tercela lainnya.</p>
+
+                <h3>D. Hal-Hal Yang Membatalkan Puasa</h3>
+                <p>Dalam pelaksanaan puasa, terdapat beberapa hal yang dapat membatalkan puasa apabila dilakukan dengan sengaja. Hal-hal tersebut antara lain makan dan minum dengan sengaja, melakukan hubungan suami istri di siang hari bulan Ramadan, serta muntah dengan sengaja.</p>
+                <p>Selain itu, keluarnya darah haid atau nifas bagi perempuan juga membatalkan puasa. Begitu pula dengan hilangnya akal, seperti pingsan sepanjang hari atau gila, yang menyebabkan puasa menjadi tidak sah.</p>
+                <p>Namun, jika seseorang makan atau minum karena lupa, maka puasanya tetap sah. Hal ini berdasarkan hadis Nabi Muhammad SAW yang menjelaskan bahwa itu merupakan bentuk rezeki dari Allah SWT. Ketentuan ini menunjukkan adanya unsur kemudahan dan toleransi dalam ajaran Islam.</p>
+
+                <h3>E. Hal-Hal Yang Makruh Dalam Puasa</h3>
+                <p>Selain hal-hal yang membatalkan puasa, terdapat pula perbuatan yang tidak membatalkan tetapi makruh untuk dilakukan saat berpuasa. Makruh berarti sebaiknya ditinggalkan karena dapat mengurangi pahala puasa.</p>
+                <p>Beberapa hal yang makruh dalam puasa antara lain berkumur secara berlebihan, menggosok gigi setelah waktu zuhur (menurut sebagian pendapat ulama), mencicipi makanan tanpa kebutuhan, serta melakukan hal-hal yang mendekati pembatal puasa.</p>
+                <p>Selain itu, perilaku seperti berkata kasar, marah, berbohong, dan bergunjing juga termasuk perbuatan yang mengurangi nilai pahala puasa. Oleh karena itu, seorang Muslim tidak hanya menjaga diri dari hal-hal yang membatalkan puasa, tetapi juga menjaga akhlak dan perilakunya selama berpuasa.</p>
+
+                <div class="action-box">
+                    <h4>Materi Interaktif & Evaluasi BAB II</h4>
+                    <a href="https://bit.ly/QUIZ_BAB_2" target="_blank" class="btn-action btn-quiz">📝 Ikuti Kuis</a>
+                    <a href="https://gemini.google.com/share/3ce82c49f133" target="_blank" class="btn-action btn-game">������ Mainkan Game</a>
+                    <a href="https://canva.link/bcpwzx0tozcyzez" target="_blank" class="btn-action btn-materi">🎨 Materi Canva</a>
+                    <span class="btn-action btn-disabled">🎬 Video Belum Tersedia</span>
+                </div>
+            </section>
+
+            <section id="bab3" class="chapter-section">
+                <h2>BAB III: Hikmah dan Manfaat Puasa</h2>
+                
+                <h3>A. Hikmah Puasa dalam Aspek Spiritual</h3>
+                <p>Puasa merupakan ibadah yang memiliki dimensi spiritual yang sangat mendalam dalam ajaran Islam. Melalui puasa, seorang Muslim dilatih untuk meningkatkan kualitas hubungan dengan Allah SWT. Aktivitas menahan diri dari makan, minum, dan hal-hal yang membatalkan puasa bukan hanya sekadar bentuk ketaatan lahiriah, tetapi juga sarana untuk membersihkan jiwa dari sifat-sifat tercela.</p>
+                <p>Dalam Al-Qur'an, tujuan utama puasa adalah untuk mencapai derajat ketakwaan. Ketakwaan ini tercermin dalam kesadaran bahwa Allah senantiasa mengawasi setiap perbuatan manusia. Oleh karena itu, puasa melatih keikhlasan karena ibadah ini sangat bergantung pada niat dan tidak selalu terlihat oleh orang lain.</p>
+                <p>Selain itu, puasa juga memperkuat nilai sabar, syukur, dan tawakal. Seseorang yang berpuasa belajar untuk bersabar dalam menghadapi rasa lapar dan haus, bersyukur atas nikmat yang diberikan, serta berserah diri kepada Allah dalam menjalani kehidupan. Dengan demikian, puasa menjadi sarana pembinaan spiritual yang efektif dalam membentuk pribadi yang lebih dekat kepada Allah SWT.</p>
+
+                <h3>B. Hikmah Puasa dalam Aspek Sosial</h3>
+                <p>Puasa tidak hanya berdampak pada individu, tetapi juga memiliki dimensi sosial yang sangat kuat. Salah satu hikmah utama puasa dalam aspek sosial adalah menumbuhkan rasa empati dan solidaritas terhadap sesama, khususnya kepada orang-orang yang kurang mampu.</p>
+                <p>Dengan merasakan lapar dan haus, seseorang akan lebih memahami kondisi orang lain yang hidup dalam kekurangan. Hal ini mendorong tumbuhnya sikap peduli, seperti berbagi makanan, bersedekah, dan membantu sesama. Tradisi berbuka puasa bersama dan pemberian zakat fitrah juga mempererat hubungan sosial dalam masyarakat.</p>
+                <p>Selain itu, puasa mengajarkan nilai kebersamaan dan persatuan. Umat Islam di seluruh dunia menjalankan ibadah puasa pada waktu yang sama, sehingga tercipta rasa persaudaraan yang kuat. Dengan demikian, puasa menjadi sarana untuk membangun masyarakat yang harmonis, saling peduli, dan penuh kasih sayang.</p>
+
+                <h3>C. Manfaat Puasa bagi Kesehatan</h3>
+                <p>Selain memiliki nilai spiritual dan sosial, puasa juga memberikan manfaat yang signifikan bagi kesehatan tubuh. Secara ilmiah, puasa dapat membantu proses detoksifikasi, yaitu pembuangan racun dari dalam tubuh. Ketika seseorang berpuasa, sistem pencernaan diberikan waktu untuk beristirahat sehingga organ tubuh dapat bekerja lebih optimal.</p>
+                <p>Puasa juga dapat membantu mengatur kadar gula darah, menurunkan berat badan, serta meningkatkan metabolisme tubuh. Dalam dunia kesehatan modern, konsep puasa sering dikaitkan dengan metode intermittent fasting, yaitu pola makan yang mengatur waktu makan dan puasa untuk meningkatkan kesehatan.</p>
+                <p>Selain itu, puasa dapat meningkatkan kesehatan jantung, memperbaiki fungsi otak, serta memperkuat sistem imun. Namun, manfaat ini akan optimal jika puasa dilakukan dengan pola makan yang seimbang saat sahur dan berbuka, serta diimbangi dengan gaya hidup sehat.</p>
+
+                <h3>D. Puasa sebagai Pengendalian Diri dan Emosi</h3>
+                <p>Salah satu hikmah penting dari puasa adalah melatih pengendalian diri, baik secara fisik maupun emosional. Puasa mengajarkan seseorang untuk menahan hawa nafsu, termasuk keinginan makan, minum, dan perilaku negatif.</p>
+                <p>Dalam kehidupan sehari-hari, manusia sering dihadapkan pada berbagai godaan dan tekanan emosional. Melalui puasa, seseorang dilatih untuk mengendalikan amarah, menghindari perkataan yang tidak baik, serta menjaga perilaku agar tetap sesuai dengan ajaran Islam.</p>
+                <p>Pengendalian diri ini sangat penting dalam membentuk kepribadian yang matang dan stabil. Seseorang yang mampu mengendalikan emosi cenderung lebih bijaksana dalam mengambil keputusan, lebih sabar dalam menghadapi masalah, serta memiliki hubungan sosial yang lebih baik. Dengan demikian, puasa bukan hanya ibadah ritual, tetapi juga sarana pendidikan karakter yang efektif dalam membentuk pribadi yang disiplin, sabar, dan berakhlak mulia.</p>
+
+                <h3>E. Puasa dalam Perspektif Kehidupan Moderen</h3>
+                <p>Di era modern yang penuh dengan kesibukan, tekanan, dan distraksi digital, puasa tetap relevan dan memiliki nilai yang sangat penting. Puasa menjadi momen untuk melakukan refleksi diri dan mengurangi ketergantungan terhadap gaya hidup konsumtif.</p>
+                <p>Kehidupan modern seringkali ditandai dengan pola hidup yang serba instan, konsumsi berlebihan, serta kurangnya waktu untuk introspeksi. Dalam konteks ini, puasa hadir sebagai sarana untuk mengembalikan keseimbangan hidup, baik secara fisik, mental, maupun spiritual.</p>
+                <p>Puasa juga membantu mengurangi stres dan meningkatkan kesehatan mental. Dengan mengatur pola makan dan memperbanyak ibadah, seseorang dapat mencapai ketenangan batin di tengah kesibukan hidup modern. Selain itu, puasa mendorong penggunaan waktu yang lebih produktif, seperti membaca, beribadah, dan melakukan kegiatan positif lainnya.</p>
+
+                <div class="action-box">
+                    <h4>Materi Interaktif & Evaluasi BAB III</h4>
+                    <a href="https://bit.ly/QUIZ_BAB_3" target="_blank" class="btn-action btn-quiz">📝 Ikuti Kuis</a>
+                    <a href="https://gemini.google.com/share/ad8c8360ff55" target="_blank" class="btn-action btn-game">🎮 Mainkan Game</a>
+                    <a href="https://canva.link/hkp07q6ediaeg0p" target="_blank" class="btn-action btn-materi">🎨 Materi Canva</a>
+                    <span class="btn-action btn-disabled">🎬 Video Belum Tersedia</span>
+                </div>
+            </section>
+
+            <section id="bab4" class="chapter-section">
+                <h2>BAB IV: Puasa dalam Kehidupan Sosial dan Pendidikan</h2>
+                
+                <h3>A. Puasa dan Pembentukan Karakter</h3>
+                <p>Puasa merupakan salah satu ibadah yang memiliki peran penting dalam pembentukan karakter individu. Dalam ajaran Islam, puasa tidak hanya dipahami sebagai aktivitas menahan lapar dan dahaga, tetapi juga sebagai proses pendidikan moral dan spiritual yang membentuk kepribadian manusia. Melalui puasa, seseorang dilatih untuk memiliki sifat sabar, jujur, disiplin, dan bertanggung jawab.</p>
+                <p>Nilai kejujuran dalam puasa sangat menonjol, karena ibadah ini bersifat personal dan tidak dapat sepenuhnya diawasi oleh orang lain. Seseorang bisa saja berpura-pura berpuasa di hadapan orang lain, tetapi kejujuran kepada diri sendiri dan kepada Allah SWT menjadi kunci utama. Hal ini menunjukkan bahwa puasa berperan dalam membentuk integritas pribadi.</p>
+                <p>Selain itu, puasa juga melatih kedisiplinan, terutama dalam mengatur waktu makan, ibadah, dan aktivitas sehari-hari. Dengan menjalankan puasa secara konsisten, seseorang akan terbiasa hidup teratur dan mampu mengendalikan diri dari berbagai godaan. Dengan demikian, puasa menjadi sarana efektif dalam membentuk karakter yang kuat dan berakhlak mulia.</p>
+
+                <h3>B. Puasa dalam Menumbuhkan Kepedulian Sosial</h3>
+                <p>Puasa memiliki dimensi sosial yang sangat penting dalam kehidupan bermasyarakat. Salah satu hikmah utama dari puasa adalah menumbuhkan rasa empati terhadap sesama, khususnya kepada mereka yang hidup dalam kekurangan. Dengan merasakan lapar dan haus, seseorang dapat lebih memahami penderitaan orang lain.</p>
+                <p>Nilai kepedulian sosial ini tercermin dalam berbagai aktivitas selama bulan Ramadan, seperti berbagi makanan untuk berbuka puasa, memberikan sedekah, serta menunaikan zakat fitrah. Aktivitas-aktivitas tersebut memperkuat rasa solidaritas dan kebersamaan dalam masyarakat.</p>
+                <p>Selain itu, puasa juga mendorong terciptanya hubungan sosial yang harmonis. Tradisi berbuka bersama, kegiatan keagamaan di masjid, serta interaksi sosial lainnya selama bulan Ramadan menjadi sarana untuk mempererat tali silaturahmi. Dengan demikian, puasa tidak hanya meningkatkan kualitas individu, tetapi juga memperkuat struktur sosial dalam masyarakat.</p>
+
+                <h3>C. Implementasi Nilai Puasa dalam Pendidikan</h3>
+                <p>Nilai-nilai yang terkandung dalam ibadah puasa dapat diimplementasikan dalam dunia pendidikan sebagai bagian dari pembentukan karakter peserta didik. Pendidikan tidak hanya berfokus pada aspek kognitif, tetapi juga pada pembentukan sikap dan perilaku yang baik.</p>
+                <p>Puasa mengajarkan nilai-nilai seperti disiplin, tanggung jawab, kejujuran, dan kesabaran, yang sangat relevan dalam proses pembelajaran. Guru dapat mengintegrasikan nilai-nilai ini dalam kegiatan belajar mengajar, baik melalui pembiasaan, keteladanan, maupun penguatan karakter.</p>
+                <p>Selain itu, puasa juga dapat menjadi sarana untuk mengembangkan kecerdasan emosional dan spiritual peserta didik. Dengan memahami makna puasa, siswa diharapkan mampu mengendalikan emosi, menghargai orang lain, serta memiliki kesadaran moral yang tinggi. Dengan demikian, implementasi nilai puasa dalam pendidikan dapat membantu menciptakan generasi yang tidak hanya cerdas secara intelektual, tetapi juga memiliki karakter yang kuat dan berakhlak mulia.</p>
+
+                <h3>D. Puasa dan Moderasi Beragama</h3>
+                <p>Puasa juga memiliki peran penting dalam menumbuhkan sikap moderasi beragama. Moderasi beragama merupakan sikap beragama yang seimbang, tidak berlebihan, dan tidak ekstrem dalam memahami serta mengamalkan ajaran agama.</p>
+                <p>Melalui puasa, umat Islam diajarkan untuk hidup sederhana, tidak berlebihan dalam konsumsi, serta menghargai perbedaan. Nilai kesederhanaan ini sangat relevan dalam membangun sikap moderat dalam kehidupan beragama.</p>
+                <p>Selain itu, puasa juga mengajarkan toleransi dan penghormatan terhadap orang lain yang memiliki latar belakang berbeda. Dalam masyarakat yang plural, sikap ini sangat penting untuk menjaga keharmonisan dan persatuan. Dengan demikian, puasa dapat menjadi sarana untuk menanamkan nilai-nilai moderasi beragama yang mendukung terciptanya kehidupan yang damai dan harmonis di tengah keberagaman.</p>
+
+                <h3>E. Peran Puasa dalam Kehidupan Bermasyarakat</h3>
+                <p>Puasa memiliki peran yang sangat penting dalam kehidupan bermasyarakat. Selain sebagai ibadah individu, puasa juga berfungsi sebagai sarana pembentukan tatanan sosial yang lebih baik.</p>
+                <p>Dalam kehidupan masyarakat, puasa mendorong terciptanya nilai-nilai seperti gotong royong, kepedulian, dan kebersamaan. Kegiatan sosial selama bulan Ramadan, seperti pembagian takjil, santunan kepada fakir miskin, dan kegiatan keagamaan lainnya, memperkuat rasa solidaritas sosial.</p>
+                <p>Selain itu, puasa juga berkontribusi dalam menciptakan lingkungan yang lebih kondusif dan harmonis. Dengan meningkatnya kesadaran spiritual, masyarakat cenderung lebih menjaga perilaku, menghindari konflik, dan memperbanyak kegiatan positif.</p>
+                <p>Puasa juga berperan dalam membentuk masyarakat yang lebih adil dan seimbang, karena mendorong distribusi kekayaan melalui zakat dan sedekah. Hal ini membantu mengurangi kesenjangan sosial dan meningkatkan kesejahteraan masyarakat. Dengan demikian, puasa tidak hanya berdampak pada individu, tetapi juga memiliki kontribusi besar dalam membangun kehidupan sosial yang lebih baik, harmonis, dan berkeadilan.</p>
+
+                <div class="action-box">
+                    <h4>Materi Interaktif & Evaluasi BAB IV</h4>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScWoIFg3mrWev_MnA1hUprWM8O8Z8BiHTIEKqDVnK7Kkmijkg/viewform" target="_blank" class="btn-action btn-quiz">📝 Ikuti Kuis</a>
+                    <a href="https://gemini.google.com/share/db634a447092" target="_blank" class="btn-action btn-game">🎮 Mainkan Game</a>
+                    <a href="https://canva.link/wjmy5qhe85wxelk" target="_blank" class="btn-action btn-materi">🎨 Materi Canva</a>
+                    <span class="btn-action btn-disabled">🎬 Video Belum Tersedia</span>
+                </div>
+            </section>
+
+            <section id="bab5" class="chapter-section">
+                <h2>BAB V: Permasalahan dan Tantangan di Era Moderen</h2>
+                
+                <h3>A. Tantangan Pelaksanaan Puasa di Era Digital</h3>
+                <p>Perkembangan teknologi digital telah membawa perubahan besar dalam kehidupan manusia, termasuk dalam pelaksanaan ibadah puasa. Di satu sisi, teknologi memberikan kemudahan akses informasi keagamaan melalui berbagai platform digital. Namun, di sisi lain, kehadiran media sosial, game online, dan hiburan digital dapat menjadi distraksi yang mengurangi kualitas ibadah.</p>
+                <p>Penggunaan gawai secara berlebihan seringkali membuat seseorang lalai dalam menjalankan ibadah, seperti menunda salat, kurang khusyuk dalam beribadah, atau menghabiskan waktu untuk hal-hal yang kurang bermanfaat. Selain itu, konten negatif yang beredar di dunia digital juga dapat memengaruhi perilaku dan pola pikir, sehingga bertentangan dengan nilai-nilai yang diajarkan dalam puasa.</p>
+                <p>Dengan demikian, tantangan utama dalam era digital adalah bagaimana memanfaatkan teknologi secara bijak tanpa mengurangi esensi ibadah puasa sebagai sarana mendekatkan diri kepada Allah SWT.</p>
+
+                <h3>B. Pengaruh Gaya Hidup Moderen terhadap Puasa</h3>
+                <p>Gaya hidup modern yang serba cepat dan konsumtif juga memberikan pengaruh terhadap pelaksanaan puasa. Pola hidup yang cenderung instan, seperti konsumsi makanan cepat saji, kebiasaan begadang, serta aktivitas yang padat, dapat mengganggu kualitas puasa.</p>
+                <p>Selain itu, fenomena “balas dendam” saat berbuka puasa, seperti makan berlebihan atau mengonsumsi makanan yang tidak sehat, dapat menghilangkan hikmah puasa sebagai sarana pengendalian diri. Alih-alih menahan diri, sebagian orang justru menjadikan waktu berbuka sebagai ajang pemuasan hawa nafsu.</p>
+                <p>Gaya hidup modern juga seringkali membuat seseorang kurang memiliki waktu untuk beribadah secara maksimal. Kesibukan pekerjaan dan aktivitas sehari-hari dapat menjadi alasan untuk mengurangi kualitas ibadah, seperti membaca Al-Qur’an atau melaksanakan salat sunnah.</p>
+
+                <h3>C. Fenomena Penurunan Kualitas Ibadah</h3>
+                <p>Salah satu permasalahan yang sering terjadi di era modern adalah penurunan kualitas ibadah puasa. Hal ini dapat dilihat dari kurangnya pemahaman terhadap makna puasa, sehingga puasa hanya dijalankan sebagai rutinitas tanpa penghayatan yang mendalam.</p>
+                <p>Sebagian orang mungkin mampu menahan lapar dan dahaga, tetapi tidak mampu menjaga lisan dan perilaku. Perbuatan seperti berkata kasar, berbohong, dan bergunjing masih sering terjadi, padahal hal tersebut dapat mengurangi nilai pahala puasa.</p>
+                <p>Selain itu, kurangnya kesadaran spiritual juga menjadi faktor penyebab penurunan kualitas ibadah. Puasa yang seharusnya menjadi sarana untuk meningkatkan ketakwaan justru kehilangan maknanya ketika dilakukan tanpa kesungguhan dan keikhlasan.</p>
+
+                <h3>D. Solusi Menghadapi Tantangan Puasa</h3>
+                <p>Untuk menghadapi berbagai tantangan tersebut, diperlukan upaya yang terencana dan berkelanjutan. Salah satu solusi utama adalah meningkatkan kesadaran akan tujuan puasa, yaitu untuk mencapai ketakwaan sebagaimana dijelaskan dalam Al-Qur'an.</p>
+                <p>Pengelolaan waktu juga menjadi kunci penting dalam menjaga kualitas puasa. Seseorang perlu mengatur waktu antara aktivitas duniawi dan ibadah agar keduanya dapat berjalan seimbang. Selain itu, penggunaan teknologi harus diarahkan pada hal-hal yang positif, seperti mengikuti kajian online atau membaca konten keislaman.</p>
+                <p>Lingkungan yang baik juga sangat berpengaruh. Bergaul dengan orang-orang yang memiliki semangat ibadah yang tinggi dapat memberikan motivasi untuk meningkatkan kualitas puasa. Dukungan keluarga dan masyarakat juga menjadi faktor penting dalam menjaga konsistensi ibadah.</p>
+
+                <h3>E. Upaya Meningkatkan Kualitas Puasa</h3>
+                <p>Meningkatkan kualitas puasa tidak hanya bergantung pada menahan lapar dan dahaga, tetapi juga pada peningkatan kualitas ibadah secara keseluruhan. Salah satu upaya yang dapat dilakukan adalah memperbanyak ibadah sunnah, seperti membaca Al-Qur’an, bersedekah, dan melaksanakan salat malam.</p>
+                <p>Selain itu, penting untuk menjaga niat dan keikhlasan dalam berpuasa. Puasa yang dilakukan dengan niat yang benar akan memberikan dampak yang lebih besar dalam kehidupan spiritual seseorang.</p>
+                <p>Pengendalian diri juga harus menjadi fokus utama. Seseorang perlu melatih diri untuk menjaga lisan, menghindari perbuatan yang tidak baik, serta meningkatkan kualitas akhlak. Dengan demikian, puasa tidak hanya menjadi ibadah ritual, tetapi juga sarana transformasi diri menuju pribadi yang lebih baik.</p>
+                <p>Di era modern ini, puasa dapat menjadi momentum untuk memperbaiki diri dan meningkatkan kualitas hidup secara menyeluruh. Dengan memahami tantangan yang ada dan menerapkan solusi yang tepat, puasa dapat tetap menjadi ibadah yang relevan dan bermakna dalam kehidupan manusia.</p>
+
+                <div class="action-box">
+                    <h4>Materi Interaktif & Evaluasi BAB V</h4>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeO_ZvnvPnawhCfLPqR26Fw7WLLh6NTkkjbOwBBIWHGxZzb4g/viewform" target="_blank" class="btn-action btn-quiz">📝 Ikuti Kuis</a>
+                    <a href="https://gemini.google.com/share/db9961c6f201" target="_blank" class="btn-action btn-game">🎮 Mainkan Game</a>
+                    <span class="btn-action btn-disabled">🎨 Materi Canva Belum Tersedia</span>
+                    <span class="btn-action btn-disabled">🎬 Video Belum Tersedia</span>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
